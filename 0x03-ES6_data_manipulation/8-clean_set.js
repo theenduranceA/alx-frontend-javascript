@@ -1,8 +1,11 @@
-export default function cleanSet(set, startString) {
-  const myValues = Array.from(set)
-    .filter((value) => value.startsWith(startString))
-    .map((value) => value.substring(startString.length));
-  const myString = myValues.join('-');
+export default function cleanSet(set, string) {
+  if (string === undefined || string.length === 0) {
+    return '';
+  }
 
-  return myString;
+  const myValues = [...set]
+    .filter((str) => str !== undefined && str.startsWith(string))
+    .map((str) => str.slice(string.length));
+
+  return myValues.join('-');
 }
